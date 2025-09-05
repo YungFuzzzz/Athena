@@ -5,7 +5,7 @@
 	--accent:#000;
 	--max-width:900px;
 }
-/* Metropolis font faces (local files in assets/fonts) */
+
 @font-face{
 	font-family: 'Metropolis';
 	src: url('../assets/fonts/metropolis.regular.otf') format('opentype');
@@ -75,7 +75,7 @@ body{
 .link:hover{color:var(--text)}
 
 /* highlighted link (the last real link before coming-soon) */
-.link.highlight{color:#e11 !important}
+.link.highlight{color:#0000FF !important}
 .link.highlight .num{color:inherit}
 .link.highlight .title-text{color:inherit}
 .link.highlight .arrow{opacity:1;transform:translateX(0);}
