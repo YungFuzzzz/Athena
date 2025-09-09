@@ -6,6 +6,21 @@
 	--max-width:900px;
 }
 
+/* ---------- Blog post layout ---------- */
+.post{max-width:var(--max-width);margin:36px auto;padding:0 16px}
+.post-header{margin-bottom:22px}
+.byline{color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px 0}
+.post-title{font-size:clamp(28px,6vw,48px);margin:0 0 12px 0;font-weight:900;text-transform:uppercase}
+.lead{color:var(--muted);margin:0 0 18px 0;font-weight:400}
+.post-hero img{width:100%;height:auto;display:block;margin-bottom:18px;border-radius:2px}
+.post-body{color:var(--text);line-height:1.6;font-size:18px}
+.post-body h2{margin-top:20px;margin-bottom:10px}
+.post-body p{margin:0 0 12px 0}
+.conclusion{margin-top:16px;font-weight:700}
+
+/* ensure post content sits above footer */
+.post, .post *{background:transparent}
+
 @font-face{
 	font-family: 'Metropolis';
 	src: url('../assets/fonts/metropolis.regular.otf') format('opentype');
@@ -47,64 +62,39 @@ body{
 .logo-btn{background:transparent;border:0;cursor:pointer;padding:6px;margin:0;display:inline-flex;align-items:flex-start}
 .logo-btn img{width:56px;height:auto;display:block}
 
-.content{flex:1;display:flex;justify-content:flex-start;padding:12px 8px}
-.links{list-style:none;padding:0;margin:0;max-width:none;width:100%}
-.link-item{padding:12px 6px;border-bottom:0}
-.link{display:flex;gap:8px;align-items:center;text-decoration:none;color:var(--muted);transition:color .16s ease; width:100%;padding-right:8px}
-.link .num{font-weight:700;min-width:48px;display:inline-block;text-transform:uppercase;letter-spacing:1px}
-.link .title{font-size:clamp(27px,6vw,42px);text-transform:uppercase;letter-spacing:1px;flex:1;overflow:hidden}
-.coming-soon .title{font-size:clamp(27px,6vw,42px);text-transform:uppercase;letter-spacing:1px;flex:1;overflow:hidden}
+.content{flex:1;display:block;padding:20px 8px}
 
-.title-inner{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
-.title-text{display:inline-block;white-space:nowrap}
+/* author / site meta */
+.site-meta{max-width:var(--max-width);margin:28px auto;display:flex;gap:16px;align-items:center;padding:0 16px}
+.author-photo{width:120px;height:120px;border-radius:8px;object-fit:cover}
+.author-info{display:flex;flex-direction:column}
+.author-name{margin:0;font-size:18px;font-weight:900}
+.author-company{margin:4px 0 0 0;color:var(--muted)}
+.company-link{color:var(--text);text-decoration:underline}
 
-/* reserve space on the right for the arrow so it won't overlap text */
-.title{padding-right:1.2em}
+/* stacked posts */
+.post{background:#fff;border-radius:4px;padding:22px;margin:22px auto;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+.post + .post{margin-top:12px}
+.post-meta{color:var(--muted);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin:0 0 6px 0}
+.post h3.post-title{font-size:20px;margin:0 0 10px}
 
-/* coming-soon should visually match regular links (same number/font) */
-.coming-soon .title-text{font-family:inherit;font-weight:700}
+pre{background:#f6f6f6;padding:12px;border-radius:4px;overflow:auto}
+blockquote{border-left:3px solid rgba(0,0,0,0.06);padding-left:12px;color:var(--muted);margin:12px 0}
 
-/* allow title to scroll horizontally on hover if too long */
-.link:hover .title-text, .link:focus .title-text{
-	will-change:transform; 
+@media (max-width:920px){
+	.site-meta{flex-direction:row;gap:12px}
+	.author-photo{width:96px;height:96px}
 }
 
-/* coming-soon should occupy full width */
-.coming-soon{width:100%;padding:12px 8px}
-.link .arrow{opacity:0;transform:translateX(-0.9em);transition:opacity .18s linear, transform .28s cubic-bezier(.2,.8,.25,1);color:var(--accent);display:inline-flex;align-items:center}
-.link:hover{color:var(--text)}
-
-/* highlighted link (the last real link before coming-soon) */
-.link.highlight{color:#0000FF !important}
-.link.highlight .num{color:inherit}
-.link.highlight .title-text{color:inherit}
-.link.highlight .arrow{opacity:1;transform:translateX(0);}
-/* highlight uses an external arrow image provided by the user; keep sizing consistent */
-.link.highlight .arrow-img.arrow-current{width:1.05em;height:1.05em;display:inline-block;vertical-align:middle}
-
-/* make the arrow visually larger and square */
-.arrow svg{width:1em;height:1em;display:inline-block;vertical-align:middle;shape-rendering:crispEdges;vector-effect:non-scaling-stroke}
-.arrow rect{display:none}
-.arrow path{stroke:currentColor;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter}
-
-/* hide arrows for coming-soon rows */
-.coming-soon .arrow{display:none}
-
-/* external arrow image (user-provided) */
-.arrow-img{width:1em;height:1em;display:inline-block;vertical-align:middle}
-
-.coming-soon{color:var(--muted);display:flex;gap:8px;align-items:center;cursor:default}
-.coming-soon .num{min-width:48px;text-transform:uppercase;font-weight:700}
-.coming-soon .title-text{font-family:inherit;font-weight:400}
-.coming-soon.top-soon{position:relative}
-
-.tooltip{position:fixed;pointer-events:none;background:#111;color:#fff;padding:8px 12px;border-radius:0;font-size:14px;line-height:1;transform:translate(-50%,-130%);white-space:nowrap;opacity:0;transition:opacity .12s ease;font-family:'Metropolis', Inter, ui-sans-serif, system-ui;font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,0.28);text-transform:uppercase;letter-spacing:1px;} 
+@media (max-width:720px){
+	.site-meta{flex-direction:row;gap:12px}
+	.author-photo{width:72px;height:72px}
+}
 
 /* responsive */
 @media (max-width:640px){
 	.logo-btn img{width:44px}
-	.link .num{min-width:46px;font-size:14px}
 }
 
 /* small aesthetic */
-.links a:focus{outline:2px dashed rgba(0,0,0,0.12);outline-offset:6px}
+.post a:focus{outline:2px dashed rgba(0,0,0,0.12);outline-offset:6px}
