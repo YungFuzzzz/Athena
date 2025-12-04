@@ -1,7 +1,7 @@
 :root{
 	--bg:#F8F8F8;
-	--muted:#9b9b9b;
-	--text:#333333;
+	--muted:#ccc;
+	--text:#000;
 	--accent:#000;
 	--max-width:900px;
 }
@@ -59,7 +59,7 @@ body{
 	color:var(--text);
 }
 .page{min-height:100vh;display:flex;flex-direction:column;overflow-y:auto}
-.site-header{position:sticky;top:0;display:flex;justify-content:flex-end;padding:8px 8px;z-index:60}
+.site-header{position:sticky;top:0;display:flex;justify-content:flex-end;align-items:flex-start;padding:8px 8px;z-index:60;max-width:var(--max-width);margin:0 auto;width:100%}
 .logo-btn{background:transparent;border:0;cursor:pointer;padding:6px;margin:0;display:inline-flex;align-items:flex-start}
 .logo-btn img{width:56px;height:auto;display:block}
 
@@ -85,6 +85,40 @@ body{
 
 pre{background:#f6f6f6;padding:12px;border-radius:4px;overflow:auto}
 blockquote{border-left:3px solid rgba(0,0,0,0.06);padding-left:12px;color:var(--muted);margin:12px 0}
+
+.lang-toggle{
+	display:flex;
+	gap:8px
+}
+
+.lang-btn{
+	background:transparent;
+	border:1px solid var(--text);
+	color:var(--text);
+	padding:10px 16px;
+	cursor:pointer;
+	font-weight:700;
+	font-size:12px;
+	letter-spacing:0.5px;
+	border-radius:0;
+	transition:all 0.2s ease;
+	text-transform:uppercase;
+	font-family: 'Metropolis', sans-serif
+}
+
+.lang-btn:last-child{
+	border-right:1px solid var(--text)
+}
+
+.lang-btn:hover{
+	background:var(--text);
+	color:var(--bg)
+}
+
+.lang-btn.active{
+	background:var(--text);
+	color:var(--bg)
+}
 
 @media (max-width:920px){
 	.site-meta{flex-direction:row;gap:12px}
