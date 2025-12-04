@@ -249,34 +249,28 @@ function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('language', lang);
     
-    // Update active button
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
     
-    // Update content
     updateContent();
 }
 
 function updateContent() {
     const t = translations[currentLang];
     
-    // Update author info
     document.querySelector('.author-name').textContent = t.authorName;
     const companyText = document.querySelector('.author-company');
     companyText.childNodes[0].textContent = t.authorCompany;
     document.querySelector('.company-link').textContent = t.companyLink;
     
-    // Update posts
     document.querySelectorAll('.post').forEach((post, index) => {
         const weekKey = `week${index + 1}`;
         const postData = t.posts[weekKey];
         
         if (postData) {
-            // Update title
             post.querySelector('.post-title').textContent = postData.title;
             
-            // Update sections
             const h4s = post.querySelectorAll('h4');
             const sections = Object.values(postData.sections);
             h4s.forEach((h4, i) => {
@@ -285,7 +279,6 @@ function updateContent() {
                 }
             });
             
-            // Update content paragraphs
             const paragraphs = post.querySelectorAll('.post-body > p');
             const contents = Object.values(postData.content);
             paragraphs.forEach((p, i) => {
@@ -297,16 +290,15 @@ function updateContent() {
     });
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Language buttons
+
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
     
     setLanguage(currentLang);
     
-    // Collapse functionality
+
     const posts = document.querySelectorAll('.post');
     posts.forEach(post => {
         const header = post.querySelector('.post-header');

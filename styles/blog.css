@@ -19,7 +19,6 @@
 .post-body p{margin:0 0 12px 0}
 .conclusion{margin-top:16px;font-weight:700}
 
-/* ensure post content sits above footer */
 .post, .post *{background:transparent}
 
 @font-face{
@@ -130,10 +129,8 @@ blockquote{border-left:3px solid rgba(0,0,0,0.06);padding-left:12px;color:var(--
 	.author-photo{width:72px;height:72px}
 }
 
-/* responsive */
 @media (max-width:640px){
 	.logo-btn img{width:44px}
 }
 
-/* small aesthetic */
 .post a:focus{outline:2px dashed rgba(0,0,0,0.12);outline-offset:6px}
